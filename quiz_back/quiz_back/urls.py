@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include   
+from api import views
+from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
+    # path(r'api/login', views.login()),
+    path('api/login', obtain_auth_token),
+    path('api/posts', views.Posts.as_view()),
+    path('api/posts/<int:post_id>', views.SinglePost.as_view()),
+    # path('api/posts/<int:post_id>/like', views.LikePost.as_view()), # ???
     path('admin/', admin.site.urls),
 ]

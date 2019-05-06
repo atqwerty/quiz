@@ -1,0 +1,7 @@
+<h2>Posts:</h2>
+<ul>
+  <li *ngFor="let post of posts">
+    <h2 routerLink="{{post.id}}" queryParamsHandling="merge">{{post.title}}</h2>
+    <router-outlet></router-outlet>
+  </li>
+</ul>
